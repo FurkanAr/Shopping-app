@@ -23,7 +23,9 @@ public class CustomUserDetails implements UserDetails {
 
     public static CustomUserDetails create(User user){
         List<GrantedAuthority> authorityList = new ArrayList<>();
-        authorityList.add(new SimpleGrantedAuthority("user"));
+        user.getRoles().forEach(role -> {
+            authorityList.add(new SimpleGrantedAuthority(role.getName()));
+        });
         return new CustomUserDetails(user.getUserName(), user.getPassword(), authorityList);
     }
 

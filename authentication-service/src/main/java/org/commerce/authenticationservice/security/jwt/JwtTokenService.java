@@ -1,4 +1,4 @@
-package org.commerce.authenticationservice.security;
+package org.commerce.authenticationservice.security.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.function.Function;
 
 @Service
 public class JwtTokenService {
@@ -21,17 +22,19 @@ public class JwtTokenService {
 
     public String findUserName(String token) {
         logger.info("findUserName method started");
-
-        String userName = Jwts.parserBuilder()
-                .setSigningKey(getKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
-
+        String userName = exportToken(token, Claims::getSubject);
         logger.info("User found with token: {}", userName);
         logger.info("findUserName method successfully worked");
         return userName;
+    }
+
+    private <T> T exportToken(String token, Function<Claims, T> claimFunction){
+        logger.info("exportToken method started");
+        final Claims claims = Jwts.parserBuilder()
+                .setSigningKey(getKey())
+                .build().parseClaimsJws(token).getBody();
+        logger.info("exportToken method successfully worked");
+        return claimFunction.apply(claims);
     }
 
     private Key getKey() {
@@ -39,6 +42,15 @@ public class JwtTokenService {
         byte[] key = Decoders.BASE64.decode(Constant.Jwt.SECRET_KEY);
         logger.info("getKey method successfully worked");
         return Keys.hmacShaKeyFor(key);
+    }
+
+    public boolean tokenControl(String jwt, UserDetails userDetails) {
+        logger.info("tokenControl method started");
+        final String userName = findUserName(jwt);
+        boolean isSame = (userName.equals(userDetails.getUsername()) && !exportToken(jwt, Claims::getExpiration).before(new Date()));
+        logger.info("Username is same: {}", isSame);
+        logger.info("tokenControl method successfully worked");
+        return isSame;
     }
 
     public String generateToken(User user) {
@@ -54,18 +66,5 @@ public class JwtTokenService {
         return token;
     }
 
-    public 	boolean validateToken(String token) {
-        try {
-            Jwts.parserBuilder().setSigningKey(getKey()).build().parseClaimsJws(token);
-            return !isTokenExpired(token);
-        } catch (SignatureException | MalformedJwtException | ExpiredJwtException | IllegalArgumentException |
-                 UnsupportedJwtException e) {
-            return false;
-        }
-    }
 
-    private boolean isTokenExpired(String token) {
-        Date expiration = Jwts.parserBuilder().setSigningKey(getKey()).build().parseClaimsJws(token).getBody().getExpiration();
-        return expiration.before(new Date());
-    }
 }

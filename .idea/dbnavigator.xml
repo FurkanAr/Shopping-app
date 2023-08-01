@@ -14,6 +14,13 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5">
       <console name="Postgre" type="STANDARD" schema="postgres" session="Main" />
+      <console name="shopping_app" type="STANDARD" schema="shopping_app" session="Main"><![CDATA[select
+    r."id",
+    r."name"
+from
+    roles r;
+
+select * from public.users]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -21,6 +28,15 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5" dataset="public.users" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5" dataset="public.user_roles" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5" dataset="public.roles" active-filter-id="">
+      <filter id="866e7b79-e561-4a26-b3ec-036c5e53c035" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -41,7 +57,7 @@
     <connections>
       <connection id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5" active="true" signed="true">
         <database>
-          <name value="Postgre" />
+          <name value="shopping_app" />
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
@@ -52,7 +68,7 @@
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="5432" />
-          <database value="postgres" />
+          <database value="shopping_app" />
           <tns-folder value="" />
           <tns-profile value="" />
           <type value="USER_PASSWORD" />
@@ -523,5 +539,8 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
   </component>
 </project>

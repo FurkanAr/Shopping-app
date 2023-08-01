@@ -1,8 +1,9 @@
-package org.commerce.authenticationservice.security;
+package org.commerce.authenticationservice.security.service;
 
 import org.commerce.authenticationservice.model.User;
 import org.commerce.authenticationservice.repository.UserRepository;
 import org.commerce.authenticationservice.exception.messages.Messages;
+import org.commerce.authenticationservice.security.CustomUserDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;

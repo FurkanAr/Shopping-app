@@ -4,15 +4,13 @@ server:
 spring:
   application:
     name: authentication-service
+  config:
+    import: "optional:configserver:"
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        ddl-auto: create-drop
-        jdbc:
-          lob:
-            non_contextual_creation: true
-      show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create-drop
+    show-sql: true
 
   datasource:
     url: jdbc:postgresql://localhost:5432/shopping_app
