@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="register and login methods added">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/constants/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/constants/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/converter/UserConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/converter/UserConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/messages/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/messages/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/response/ExceptionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/response/ExceptionResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/response/ExceptionValidatorResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/request/UserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/request/UserRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/CustomAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/CustomAccessDeniedHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtAuthenticationEntryPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/startup/DataLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/startup/DataLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/resources/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/microservice/authentication-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/microservice/authentication-service.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-parent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service-parent/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="auth server - config server connection handled" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690922569246</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="auth server - config server connection handled">
+      <created>1692978242796</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1692978242796</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -196,6 +182,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project setup" />
     <MESSAGE value="register and login methods added" />
-    <option name="LAST_COMMIT_MESSAGE" value="register and login methods added" />
+    <MESSAGE value="auth server - config server connection handled" />
+    <option name="LAST_COMMIT_MESSAGE" value="auth server - config server connection handled" />
   </component>
 </project>
