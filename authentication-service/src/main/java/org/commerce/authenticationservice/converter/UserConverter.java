@@ -27,7 +27,8 @@ public class UserConverter {
         user.setUserName(userRequest.getUserName());
         user.setEmail(userRequest.getEmail());
         user.setRoles(roles);
-        user.setFullName(userRequest.getFullName());
+        user.setFirstName(userRequest.getFirstName());
+        user.setSurName(userRequest.getSurName());
         logger.info("convert to User method successfully worked");
         return user;
     }

@@ -11,8 +11,10 @@ public class UserRequest {
     @NotEmpty(message = "Please enter your username")
     @Size(max = 15, min = 5, message = "Username: Invalid username, Username size should be between 5 to 15")
     private String userName;
-    @NotEmpty(message = "Please enter your fullName")
-    private String fullName;
+    @NotEmpty(message = "Please enter your name")
+    private String firstName;
+    @NotEmpty(message = "Please enter your surname")
+    private String surName;
     @NotEmpty(message = "Please enter your Email")
     @Email(message = "Invalid Email. Please enter proper Email")
     private String email;
@@ -31,9 +33,10 @@ public class UserRequest {
     public UserRequest() {
     }
 
-    public UserRequest(String userName, String fullName, String email, String password, Set<String> roles) {
+    public UserRequest(String userName, String firstName, String surName, String email, String password, Set<String> roles) {
         this.userName = userName;
-        this.fullName = fullName;
+        this.firstName = firstName;
+        this.surName = surName;
         this.email = email;
         this.password = password;
         this.roles = roles;
@@ -47,12 +50,20 @@ public class UserRequest {
         this.userName = userName;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
     public String getEmail() {
@@ -83,9 +94,8 @@ public class UserRequest {
     public String toString() {
         return "UserRequest{" +
                 "userName='" + userName + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", email='" + email + '\'' +
-                ", roles=" + roles +
+                ", firstName='" + firstName + '\'' +
+                ", surName='" + surName + '\'' +
                 '}';
     }
 }

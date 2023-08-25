@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+
 @Component
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
@@ -23,8 +25,8 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 
         ExceptionResponse exceptionResponse = new ExceptionResponse(
-                accessDeniedException.getMessage(),
-                HttpStatus.FORBIDDEN.value(),
+                HttpStatus.FORBIDDEN,
+                Collections.singletonList(accessDeniedException.getMessage()),
                 request.getServletPath());
 
         PrintWriter writer = response.getWriter();

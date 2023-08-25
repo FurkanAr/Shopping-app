@@ -32,11 +32,11 @@ public class DataLoad {
         roleRepository.save(roleAdmin);
 
         Set<String> roles = new HashSet<>();
-        roles.add("ADMIN");
-        roles.add("USER");
-        authenticationService.register(new UserRequest("tester", "test-user",
-                "tester@gmail.com", "Test-password123", roles));
+        roles.add(roleUser.getName());
+        roles.add(roleAdmin.getName());
 
+        authenticationService.register(new UserRequest("tester", "test-user",
+                "test-user-surname", "tester@gmail.com", "Test-password123", roles));
 
     }
 }

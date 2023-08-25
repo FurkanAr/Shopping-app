@@ -12,15 +12,8 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5">
-      <console name="Postgre" type="STANDARD" schema="postgres" session="Main" />
-      <console name="shopping_app" type="STANDARD" schema="shopping_app" session="Main"><![CDATA[select
-    r."id",
-    r."name"
-from
-    roles r;
-
-select * from public.users]]></console>
+    <connection id="ad76ca11-8d52-401e-87f7-69a64eba286c">
+      <console name="PostgreSQL" type="STANDARD" schema="shopping_app" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -55,13 +48,13 @@ select * from public.users]]></console>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5" active="true" signed="true">
+      <connection id="ad76ca11-8d52-401e-87f7-69a64eba286c" active="true" signed="true">
         <database>
-          <name value="shopping_app" />
+          <name value="PostgreSQL" />
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="15.3" />
+          <database-version value="15.4" />
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />
@@ -72,8 +65,8 @@ select * from public.users]]></console>
           <tns-folder value="" />
           <tns-profile value="" />
           <type value="USER_PASSWORD" />
-          <user value="postgres" />
-          <deprecated-pwd value="bXlwYXNzd29yZA==" />
+          <user value="root" />
+          <deprecated-pwd value="cm9vdA==" />
         </database>
         <properties>
           <auto-commit value="false" />

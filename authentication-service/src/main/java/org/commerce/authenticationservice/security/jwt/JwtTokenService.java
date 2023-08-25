@@ -57,7 +57,9 @@ public class JwtTokenService {
         logger.info("generateToken method started");
         String token = Jwts.builder()
                 .setSubject(user.getUserName())
-                .setIssuer("Blog.app")
+                .setIssuer("Ticket")
+                .claim("Role", user.getRoles())
+                .claim("Id", user.getId())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + Constant.Jwt.EXPIRES_IN))
                 .signWith(getKey(), SignatureAlgorithm.HS256)

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
 
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
@@ -23,8 +24,8 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
         ExceptionResponse exceptionResponse = new ExceptionResponse(
-                authException.getMessage(),
-                HttpStatus.UNAUTHORIZED.value(),
+                HttpStatus.UNAUTHORIZED,
+                Collections.singletonList(authException.getMessage()),
                 request.getServletPath());
 
         PrintWriter writer = response.getWriter();

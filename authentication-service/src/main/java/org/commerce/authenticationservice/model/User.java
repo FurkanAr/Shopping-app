@@ -15,8 +15,10 @@ public class User {
     private Long id;
     @Column(name = "user_name")
     private String userName;
-    @Column(name = "full_name")
-    private String fullName;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "sur_name")
+    private String surName;
     @Column(name = "email")
     private String email;
     @Column(name = "password")
@@ -35,9 +37,10 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String fullName, String email, String password, Set<Role> roles) {
+    public User(String userName, String firstName, String surName, String email, String password, Set<Role> roles) {
         this.userName = userName;
-        this.fullName = fullName;
+        this.firstName = firstName;
+        this.surName = surName;
         this.email = email;
         this.password = password;
         this.roles = roles;
@@ -59,12 +62,20 @@ public class User {
         this.userName = userName;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
     public String getEmail() {
@@ -110,13 +121,11 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", userName='" + userName + '\'' +
-                ", fullName='" + fullName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", surName='" + surName + '\'' +
                 ", email='" + email + '\'' +
-                ", createDate=" + createDate +
                 '}';
     }
-
-
 }

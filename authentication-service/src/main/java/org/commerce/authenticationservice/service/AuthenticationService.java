@@ -3,6 +3,7 @@ package org.commerce.authenticationservice.service;
 import org.commerce.authenticationservice.constants.Constant;
 import org.commerce.authenticationservice.converter.UserConverter;
 import org.commerce.authenticationservice.exception.messages.Messages;
+import org.commerce.authenticationservice.exception.role.RoleCannotFoundException;
 import org.commerce.authenticationservice.exception.user.UserEmailAlreadyInUseException;
 import org.commerce.authenticationservice.exception.user.UserNameAlreadyInUseException;
 import org.commerce.authenticationservice.model.Role;
@@ -45,11 +46,12 @@ public class AuthenticationService {
         logger.info("register method started");
         logger.info("UserRequest: {}", userRequest);
 
-        checkRequestEmailInUse(userRequest);
-        checkRequestUserNameInUse(userRequest);
+        checkRequestEmailInUse(userRequest.getEmail());
+        checkRequestUserNameInUse(userRequest.getUserName());
 
         Set<Role> roles = new HashSet<>();
-        userRequest.getRoles().forEach(r -> roles.add(roleRepository.findByName(r)));
+        userRequest.getRoles().forEach(role-> roles.add(roleRepository.findByName(role)
+                .orElseThrow(() -> new RoleCannotFoundException(Messages.Role.NOT_EXISTS + role))));
 
         User user = userRepository.save(userConverter.convert(userRequest, roles));
 
@@ -57,7 +59,7 @@ public class AuthenticationService {
         // TODO sent mail to notification service
 
         logger.info("User created: {}", user.getId());
-
+        logger.info("register method successfully worked");
         return Constant.Authentication.REGISTRATION_MESSAGE;
     }
 
@@ -81,22 +83,26 @@ public class AuthenticationService {
         return token;
     }
 
-    private void checkRequestUserNameInUse(UserRequest userRequest) {
-        Optional<User> user = userRepository.findByUserName(userRequest.getUserName());
+    private void checkRequestUserNameInUse(String username) {
+        logger.info("checkRequestUserNameInUse method started");
+        Optional<User> user = userRepository.findByUserName(username);
         if (user.isPresent()) {
-            logger.warn("Username is not available: {}", userRequest.getUserName());
-            throw new UserNameAlreadyInUseException(Messages.User.NAME_EXIST + userRequest.getUserName());
+            logger.warn("Username is not available: {}", username);
+            throw new UserNameAlreadyInUseException(Messages.User.NAME_EXIST + username);
         }
         logger.info("Username can be use");
+        logger.info("checkRequestUserNameInUse method successfully worked");
     }
 
-    private void checkRequestEmailInUse(UserRequest userRequest) {
-        Optional<User> user = userRepository.findByEmail(userRequest.getEmail());
+    private void checkRequestEmailInUse(String email) {
+        logger.info("checkRequestUserNameInUse method started");
+        Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
-            logger.warn("User already has account by given email: {}", userRequest.getEmail());
-            throw new UserEmailAlreadyInUseException(Messages.User.EMAIL_EXIST + userRequest.getEmail());
+            logger.warn("User already has account by given email: {}", email);
+            throw new UserEmailAlreadyInUseException(Messages.User.EMAIL_EXIST + email);
         }
         logger.info("Email can be use");
+        logger.info("checkRequestEmailInUse method successfully worked");
     }
 
 }

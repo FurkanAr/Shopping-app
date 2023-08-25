@@ -1,3 +1,15 @@
-far:
-  test:
-    key: 123
+server:
+  port: 9091
+
+spring:
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create-drop
+    show-sql: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shopping_app
+    username: root
+    password: root
+    driverClassName: org.postgresql.Driver
