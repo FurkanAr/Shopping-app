@@ -1,11 +1,13 @@
 package org.commerce.authenticationservice.controller.advice;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import org.commerce.authenticationservice.exception.response.ExceptionResponse;
 import org.commerce.authenticationservice.exception.role.RoleCannotFoundException;
 import org.commerce.authenticationservice.exception.user.UserEmailAlreadyInUseException;
 import org.commerce.authenticationservice.exception.user.UserNameAlreadyInUseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.nio.file.AccessDeniedException;
+import java.security.SignatureException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -39,7 +43,7 @@ public class GlobalExceptionHandler {
                 .ok(new ExceptionResponse(
                         HttpStatus.BAD_REQUEST,
                         Collections.singletonList(exception.getMessage()),
-                        request.getDescription(true)));
+                        request.getDescription(false)));
     }
 
     @ExceptionHandler(UserNameAlreadyInUseException.class)
@@ -48,7 +52,7 @@ public class GlobalExceptionHandler {
                 .ok(new ExceptionResponse(
                         HttpStatus.BAD_REQUEST,
                         Collections.singletonList(exception.getMessage()),
-                        request.getDescription(true)));
+                        request.getDescription(false)));
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
@@ -57,7 +61,7 @@ public class GlobalExceptionHandler {
                 .ok(new ExceptionResponse(
                         HttpStatus.NOT_FOUND,
                         Collections.singletonList(exception.getMessage()),
-                        request.getDescription(true)));
+                        request.getDescription(false)));
     }
 
     @ExceptionHandler(RoleCannotFoundException.class)
@@ -66,7 +70,31 @@ public class GlobalExceptionHandler {
                 .ok(new ExceptionResponse(
                         HttpStatus.NOT_FOUND,
                         Collections.singletonList(exception.getMessage()),
-                        request.getDescription(true)));
+                        request.getDescription(false)));
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ExceptionResponse> handle(Exception exception, ServletWebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse();
+
+        if (exception instanceof BadCredentialsException){
+            exceptionResponse.setHttpStatus(HttpStatus.UNAUTHORIZED);
+            exceptionResponse.setErrors(Collections.singletonList(exception.getMessage()));
+            exceptionResponse.setPath(request.getDescription(false));
+        }
+
+        if (exception instanceof SignatureException){
+            exceptionResponse.setHttpStatus(HttpStatus.FORBIDDEN);
+            exceptionResponse.setErrors(Collections.singletonList(exception.getMessage()));
+            exceptionResponse.setPath(request.getDescription(false));
+        }
+
+        if (exception instanceof ExpiredJwtException){
+            exceptionResponse.setHttpStatus(HttpStatus.FORBIDDEN);
+            exceptionResponse.setErrors(Collections.singletonList(exception.getMessage()));
+            exceptionResponse.setPath(request.getDescription(false));
+        }
+        return ResponseEntity.ok(exceptionResponse);
     }
 
 }

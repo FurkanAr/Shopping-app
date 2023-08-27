@@ -1,4 +1,4 @@
-package org.commerce.authenticationservice.security;
+package org.commerce.authenticationservice.security.service;
 
 import org.commerce.authenticationservice.model.User;
 import org.springframework.security.core.GrantedAuthority;

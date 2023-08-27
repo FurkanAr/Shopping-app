@@ -19,6 +19,7 @@ public class ExceptionResponse {
     private String path;
 
     public ExceptionResponse() {
+        this.timestamp = LocalDateTime.now();
     }
 
     public ExceptionResponse(HttpStatus httpStatus, List<String> errors, String path) {
