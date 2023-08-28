@@ -1,5 +1,6 @@
 package org.commerce.authenticationservice.security.jwt;
 
+import org.commerce.authenticationservice.repository.TokenRepository;
 import org.commerce.authenticationservice.security.service.CustomUserDetailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,14 +22,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final HandlerExceptionResolver handlerExceptionResolver;
     private final JwtTokenService jwtService;
     private final CustomUserDetailService customUserDetailService;
+    private final TokenRepository tokenRepository;
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
     public JwtAuthenticationFilter(HandlerExceptionResolver handlerExceptionResolver, JwtTokenService jwtService,
-                                   CustomUserDetailService customUserDetailService) {
+                                   CustomUserDetailService customUserDetailService, TokenRepository tokenRepository) {
         this.handlerExceptionResolver = handlerExceptionResolver;
         this.jwtService = jwtService;
         this.customUserDetailService = customUserDetailService;
+        this.tokenRepository = tokenRepository;
     }
 
     @Override
@@ -37,10 +40,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         final String header = request.getHeader("Authorization");
         final String jwt;
-        final String userName;
+        final String username;
         try {
-
-
             if (header == null || !header.startsWith("Bearer ")) {
                 logger.warn("Header is missing");
                 filterChain.doFilter(request, response);
@@ -48,14 +49,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
             jwt = header.substring(7);
             logger.info("Authorization request in header");
-            userName = jwtService.findUserName(jwt);
+            username = jwtService.findUserName(jwt);
+            logger.info("User found with jwt: {}", username);
 
-            if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails userDetails = customUserDetailService.loadUserByUsername(userName);
-                if (jwtService.tokenControl(jwt, userDetails)) {
-                    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                    usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails = customUserDetailService.loadUserByUsername(username);
+
+                var isTokenValid = tokenRepository.findByToken(jwt)
+                        .map(token -> !token.getExpired() && !token.getRevoked())
+                        .orElse(false);
+
+                if (jwtService.tokenControl(jwt, userDetails) && isTokenValid) {
+                    UsernamePasswordAuthenticationToken authenticationToken =
+                            new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                     logger.info("User: {}, authenticated", userDetails.getUsername());
                 }
             }

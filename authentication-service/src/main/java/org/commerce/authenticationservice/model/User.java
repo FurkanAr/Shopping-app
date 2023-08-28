@@ -3,6 +3,7 @@ package org.commerce.authenticationservice.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,7 +15,7 @@ public class User {
     @Column(name = "id")
     private Long id;
     @Column(name = "user_name")
-    private String userName;
+    private String username;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "sur_name")
@@ -34,16 +35,21 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Token> tokens;
+
     public User() {
+        this.createDate = LocalDateTime.now();
     }
 
-    public User(String userName, String firstName, String surName, String email, String password, Set<Role> roles) {
-        this.userName = userName;
+    public User(String username, String firstName, String surName, String email, String password, Set<Role> roles) {
+        this.username = username;
         this.firstName = firstName;
         this.surName = surName;
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.createDate = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -54,12 +60,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -110,19 +116,19 @@ public class User {
         this.roles = roles;
     }
 
-    public void addRole(Role role) {
-        this.roles.add(role);
+    public List<Token> getTokens() {
+        return tokens;
     }
 
-    public void addRoles(Set<Role> roles) {
-        this.roles.addAll(roles);
+    public void setTokens(List<Token> tokens) {
+        this.tokens = tokens;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
+                ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", surName='" + surName + '\'' +
                 ", email='" + email + '\'' +

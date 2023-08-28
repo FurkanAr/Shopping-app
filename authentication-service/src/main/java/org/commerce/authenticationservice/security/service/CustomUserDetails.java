@@ -11,22 +11,22 @@ import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
 
-    private String userName;
+    private String username;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    private CustomUserDetails(String userName, String password, Collection<? extends GrantedAuthority> authorities) {
-        this.userName = userName;
+    private CustomUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+        this.username = username;
         this.password = password;
         this.authorities = authorities;
     }
 
-    public static CustomUserDetails create(User user){
+    public static CustomUserDetails create(User user) {
         List<GrantedAuthority> authorityList = new ArrayList<>();
         user.getRoles().forEach(role -> {
             authorityList.add(new SimpleGrantedAuthority(role.getName()));
         });
-        return new CustomUserDetails(user.getUserName(), user.getPassword(), authorityList);
+        return new CustomUserDetails(user.getUsername(), user.getPassword(), authorityList);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override

@@ -2,7 +2,7 @@ package org.commerce.authenticationservice.converter;
 
 import org.commerce.authenticationservice.model.Role;
 import org.commerce.authenticationservice.model.User;
-import org.commerce.authenticationservice.request.UserRequest;
+import org.commerce.authenticationservice.request.RegisterRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,15 +20,15 @@ public class UserConverter {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User convert(UserRequest userRequest, Set<Role> roles) {
+    public User convert(RegisterRequest registerRequest, Set<Role> roles) {
         logger.info("convert to User method started");
         User user = new User();
-        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-        user.setUserName(userRequest.getUserName());
-        user.setEmail(userRequest.getEmail());
+        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        user.setUsername(registerRequest.getUsername());
+        user.setEmail(registerRequest.getEmail());
         user.setRoles(roles);
-        user.setFirstName(userRequest.getFirstName());
-        user.setSurName(userRequest.getSurName());
+        user.setFirstName(registerRequest.getFirstName());
+        user.setSurName(registerRequest.getSurName());
         logger.info("convert to User method successfully worked");
         return user;
     }

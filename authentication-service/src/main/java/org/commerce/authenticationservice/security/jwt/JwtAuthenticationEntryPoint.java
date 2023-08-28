@@ -18,7 +18,8 @@ import java.util.Collections;
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)
+            throws IOException {
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -28,8 +29,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
                 Collections.singletonList(authException.getMessage()),
                 request.getServletPath());
 
-        PrintWriter writer = response.getWriter();
-        writer.println(new ObjectMapper().writeValueAsString(exceptionResponse));
+        new ObjectMapper().writeValue(response.getOutputStream(), exceptionResponse);
 
     }
 }

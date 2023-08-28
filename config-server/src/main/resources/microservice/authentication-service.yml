@@ -1,46 +1,50 @@
 server:
   port: 9091
-
 spring:
   application:
     name: authentication-service
+  security:
+    jwt:
+      secret-key: 9ln6jZ1h5BuP28k5RmlOaeL5rise7xe9czd4yA8pZdfGA36zbmRt
+      expiration: 86400000
+      refresh-token:
+        expiration: 604800000
   output:
     ansi:
       enabled: always
   jpa:
     hibernate:
-      dialect: org.hibernate.dialect.PostgreSQLDialect
       ddl-auto: create-drop
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: jdbc:postgresql://localhost:5432/shopping_app
+    url: 'jdbc:postgresql://localhost:5432/shopping_app'
     username: root
     password: root
     driverClassName: org.postgresql.Driver
-
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: 'http://localhost:8761/eureka/'
   instance:
     hostname: localhost
-
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: '*'
   endpoint:
     health:
       show-details: always
-
-
 logging:
   level:
     root: INFO
-
   file:
-    path: "./logs/${spring.application.name}"
-    name: ${logging.file.path}/authentication-service.log
+    path: './logs/${spring.application.name}'
+    name: '${logging.file.path}/authentication-service.log'

@@ -8,11 +8,14 @@ import org.commerce.authenticationservice.constants.Constant;
 import org.commerce.authenticationservice.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 
 @Service
@@ -22,10 +25,12 @@ public class JwtTokenService {
 
     public String findUserName(String token) {
         logger.info("findUserName method started");
-        String userName = exportToken(token, Claims::getSubject);
-        logger.info("User found with token: {}", userName);
+        String username = Jwts.parserBuilder()
+                .setSigningKey(getKey())
+                .build().parseClaimsJws(token).getBody().get("username").toString();
+        logger.info("User found with token: {}", username);
         logger.info("findUserName method successfully worked");
-        return userName;
+        return username;
     }
 
     private <T> T exportToken(String token, Function<Claims, T> claimFunction){
@@ -33,6 +38,8 @@ public class JwtTokenService {
         final Claims claims = Jwts.parserBuilder()
                 .setSigningKey(getKey())
                 .build().parseClaimsJws(token).getBody();
+        logger.info("claims: {}", claims);
+        logger.info("claims: {}", claims.get("username"));
         logger.info("exportToken method successfully worked");
         return claimFunction.apply(claims);
     }
@@ -53,18 +60,30 @@ public class JwtTokenService {
         return isSame;
     }
 
-    public String generateToken(User user) {
+    public String generateToken(UserDetails user, Map<String, Object> extraClaims) {
         logger.info("generateToken method started");
+        String token = buildToken(user, extraClaims, Constant.Jwt.ACCESS_TOKEN_EXPIRES_IN);
+        logger.info("generateToken method successfully worked");
+        return token;
+    }
+
+    public String generateRefreshToken(UserDetails user,  Map<String, Object> extraClaims) {
+        logger.info("generateRefreshToken method started");
+        String token = buildToken(user, extraClaims, Constant.RefreshToken.REFRESH_TOKEN_EXPIRES_IN);
+        logger.info("generateRefreshToken method successfully worked");
+        return token;
+    }
+
+    private String buildToken(UserDetails user, Map<String, Object> extraClaims, Long expiration){
+        logger.info("buildToken method started");
         String token = Jwts.builder()
-                .setSubject(user.getUserName())
-                .setIssuer("Ticket")
-                .claim("Role", user.getRoles())
-                .claim("Id", user.getId())
+                .setIssuer("Shopping app")
+                .setClaims(extraClaims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + Constant.Jwt.EXPIRES_IN))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getKey(), SignatureAlgorithm.HS256)
                 .compact();
-        logger.info("generateToken method successfully worked");
+        logger.info("buildToken method successfully worked");
         return token;
     }
 

@@ -1,6 +1,7 @@
 package org.commerce.authenticationservice.controller.advice;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import org.commerce.authenticationservice.exception.response.ExceptionResponse;
 import org.commerce.authenticationservice.exception.role.RoleCannotFoundException;
 import org.commerce.authenticationservice.exception.user.UserEmailAlreadyInUseException;
@@ -84,6 +85,12 @@ public class GlobalExceptionHandler {
         }
 
         if (exception instanceof SignatureException){
+            exceptionResponse.setHttpStatus(HttpStatus.FORBIDDEN);
+            exceptionResponse.setErrors(Collections.singletonList(exception.getMessage()));
+            exceptionResponse.setPath(request.getDescription(false));
+        }
+
+        if (exception instanceof JwtException){
             exceptionResponse.setHttpStatus(HttpStatus.FORBIDDEN);
             exceptionResponse.setErrors(Collections.singletonList(exception.getMessage()));
             exceptionResponse.setPath(request.getDescription(false));

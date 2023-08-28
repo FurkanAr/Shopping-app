@@ -30,8 +30,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
                 Collections.singletonList(accessDeniedException.getMessage()),
                 request.getServletPath());
 
-        PrintWriter writer = response.getWriter();
+        new ObjectMapper().writeValue(response.getOutputStream(), exceptionResponse);
 
-        writer.println(new ObjectMapper().writeValueAsString(exceptionResponse));
     }
 }

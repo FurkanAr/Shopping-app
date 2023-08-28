@@ -4,23 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="security exception handled">
-      <change afterPath="$PROJECT_DIR$/eureka-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="eureka server created">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/AuthenticationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/AuthenticationServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/constants/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/constants/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/AuthenticationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/response/ExceptionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/response/ExceptionResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/converter/UserConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/converter/UserConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/repository/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/request/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/request/UserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/request/RegisterRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/CustomAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/CustomAccessDeniedHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtAuthenticationEntryPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtTokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/startup/DataLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/startup/DataLoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/microservice/authentication-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/microservice/authentication-service.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-parent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service-parent/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +37,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -63,11 +70,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.commerce.authenticationservice.model.enums" />
       <recent name="org.commerce.authenticationservice.exception.role" />
       <recent name="org.commerce.authenticationservice.exception.user" />
       <recent name="org.commerce.authenticationservice.converter" />
       <recent name="org.commerce.authenticationservice.request" />
-      <recent name="org.commerce.authenticationservice.response" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\farfa\Desktop\Shopping-app\authentication-service\src\main\resources" />
@@ -138,8 +145,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AuthenticationServiceApplication" />
-        <item itemvalue="Application.EurekaServerApplication" />
         <item itemvalue="Application.ConfigServerApplication" />
+        <item itemvalue="Application.EurekaServerApplication" />
         <item itemvalue="Docker.docs: Compose Deployment" />
         <item itemvalue="Docker.docs.psql-db: Compose Deployment" />
       </list>
@@ -189,7 +196,21 @@
       <option name="project" value="LOCAL" />
       <updated>1692979648993</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="security exception handled">
+      <created>1693143708906</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693143708906</updated>
+    </task>
+    <task id="LOCAL-00007" summary="eureka server created">
+      <created>1693143741477</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693143741477</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -222,6 +243,7 @@
     <MESSAGE value="role not found exception added" />
     <MESSAGE value="docker config updated" />
     <MESSAGE value="security exception handled" />
-    <option name="LAST_COMMIT_MESSAGE" value="security exception handled" />
+    <MESSAGE value="eureka server created" />
+    <option name="LAST_COMMIT_MESSAGE" value="eureka server created" />
   </component>
 </project>
