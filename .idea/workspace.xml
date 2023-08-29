@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="loggers added to methods">
+    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="privileges and roles added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtTokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/startup/DataLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/startup/DataLoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/microservice/authentication-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/microservice/authentication-service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/microservice/eureka-server.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/microservice/eureka-server.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/authentication-service/authentication-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/authentication-service/authentication-service.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -215,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693303437411</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="privileges and roles added">
+      <created>1693311680063</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1693311680063</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -251,6 +254,7 @@
     <MESSAGE value="eureka server created" />
     <MESSAGE value="logout method added" />
     <MESSAGE value="loggers added to methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="loggers added to methods" />
+    <MESSAGE value="privileges and roles added" />
+    <option name="LAST_COMMIT_MESSAGE" value="privileges and roles added" />
   </component>
 </project>

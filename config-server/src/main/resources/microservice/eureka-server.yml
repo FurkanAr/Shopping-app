@@ -4,10 +4,19 @@ spring:
   application:
     name: eureka-server
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
   server:
     eviction-interval-timer-in-ms: 1000
-
+  instance:
+    hostname: ${EUREKA_SERVER_HOST:localhost}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}

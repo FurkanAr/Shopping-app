@@ -33,31 +33,39 @@ public class CustomUserDetails implements UserDetails {
         return customUserDetails;
     }
 
-    private static Collection<? extends GrantedAuthority> getAuthorities(
-            Set<Role> roles) {
-
-        return getGrantedAuthorities(getPrivileges(roles));
+    private static Collection<? extends GrantedAuthority> getAuthorities(Set<Role> roles) {
+        logger.info("getAuthorities method started");
+        List<GrantedAuthority> grantedAuthority = getGrantedAuthorities(getPrivileges(roles));
+        logger.info("GrantedAuthority: {}", grantedAuthority);
+        logger.info("getAuthorities method successfully worked");
+        return grantedAuthority;
     }
 
     private static Set<String> getPrivileges(Set<Role> roles) {
+        logger.info("getPrivileges method started");
+        logger.info("roles: {}", roles);
 
         Set<String> privileges = new HashSet<>();
         Set<Privilege> collection = new HashSet<>();
-        for (Role role : roles) {
+        roles.forEach(role -> {
             privileges.add(role.getName());
             collection.addAll(role.getPrivileges());
-        }
-        for (Privilege item : collection) {
-            privileges.add(item.getName());
-        }
+        });
+
+        collection.forEach( privilege -> privileges.add(privilege.getName()));
+        logger.info("privileges: {}", privileges);
+        logger.info("collection: {}", collection);
+
+        logger.info("getPrivileges method successfully worked");
         return privileges;
     }
 
     private static List<GrantedAuthority> getGrantedAuthorities(Set<String> privileges) {
+        logger.info("getGrantedAuthorities method started");
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for (String privilege : privileges) {
-            authorities.add(new SimpleGrantedAuthority(privilege));
-        }
+        privileges.forEach(privilege -> authorities.add(new SimpleGrantedAuthority(privilege)));
+        logger.info("authorities: {}", authorities);
+        logger.info("getGrantedAuthorities method successfully worked");
         return authorities;
     }
 
