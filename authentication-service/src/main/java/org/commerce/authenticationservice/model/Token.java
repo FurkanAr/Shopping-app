@@ -3,6 +3,7 @@ package org.commerce.authenticationservice.model;
 import org.commerce.authenticationservice.model.enums.TokenType;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "token")
@@ -12,7 +13,7 @@ public class Token {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    @Column(name = "token_name")
+    @Column(name = "token_name", length = 1024)
     private String token;
     @Column(name = "tokenType")
     @Enumerated(EnumType.STRING)

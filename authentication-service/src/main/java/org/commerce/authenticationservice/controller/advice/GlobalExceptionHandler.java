@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -70,6 +71,15 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .ok(new ExceptionResponse(
                         HttpStatus.NOT_FOUND,
+                        Collections.singletonList(exception.getMessage()),
+                        request.getDescription(false)));
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<ExceptionResponse> handle(HttpRequestMethodNotSupportedException exception, ServletWebRequest request) {
+        return ResponseEntity
+                .ok(new ExceptionResponse(
+                        HttpStatus.BAD_REQUEST,
                         Collections.singletonList(exception.getMessage()),
                         request.getDescription(false)));
     }

@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="logout method added">
+    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="loggers added to methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/startup/DataLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/startup/DataLoad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/authentication-service/authentication-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/authentication-service/authentication-service.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,9 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -51,15 +58,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.commerce.authenticationservice.model" />
       <recent name="org.commerce.authenticationservice.model.enums" />
       <recent name="org.commerce.authenticationservice.exception.role" />
       <recent name="org.commerce.authenticationservice.exception.user" />
       <recent name="org.commerce.authenticationservice.converter" />
-      <recent name="org.commerce.authenticationservice.request" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\farfa\Desktop\Shopping-app\authentication-service\src\main\resources" />
       <recent name="C:\Users\farfa\Desktop\Shopping-app\authentication-service" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.commerce.authenticationservice.controller" />
     </key>
   </component>
   <component name="RunManager" selected="Application.AuthenticationServiceApplication">
@@ -126,8 +136,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AuthenticationServiceApplication" />
-        <item itemvalue="Application.ConfigServerApplication" />
         <item itemvalue="Application.EurekaServerApplication" />
+        <item itemvalue="Application.ConfigServerApplication" />
         <item itemvalue="Docker.docs: Compose Deployment" />
         <item itemvalue="Docker.docs.psql-db: Compose Deployment" />
       </list>
@@ -198,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693255592449</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="loggers added to methods">
+      <created>1693303437411</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1693303437411</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -233,6 +250,7 @@
     <MESSAGE value="security exception handled" />
     <MESSAGE value="eureka server created" />
     <MESSAGE value="logout method added" />
-    <option name="LAST_COMMIT_MESSAGE" value="logout method added" />
+    <MESSAGE value="loggers added to methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="loggers added to methods" />
   </component>
 </project>

@@ -197,10 +197,10 @@ public class AuthenticationService {
 
     private Map<String, Object> getUserJwtClaims(User user) {
         logger.info("getUserJwtClaims method started");
+
         Map<String, Object> claims = Map.ofEntries(entry("userId", user.getId()),
                 entry("username", user.getUsername()),
-                entry("role", user.getRoles())
-        );
+                entry("role", user.getRoles()));
         logger.info("User {}, jwt token claims created ", user.getId());
         logger.info("getUserJwtClaims method successfully worked");
         return claims;

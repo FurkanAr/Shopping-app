@@ -1,7 +1,9 @@
 package org.commerce.authenticationservice.startup;
 
 
+import org.commerce.authenticationservice.model.Privilege;
 import org.commerce.authenticationservice.model.Role;
+import org.commerce.authenticationservice.repository.PrivilegeRepository;
 import org.commerce.authenticationservice.repository.RoleRepository;
 import org.commerce.authenticationservice.request.RegisterRequest;
 import org.commerce.authenticationservice.service.AuthenticationService;
@@ -19,17 +21,59 @@ public class DataLoad {
 
     private final AuthenticationService authenticationService;
     private final RoleRepository roleRepository;
+    private final PrivilegeRepository privilegeRepository;
 
-    public DataLoad(AuthenticationService authenticationService, RoleRepository roleRepository) {
+    public DataLoad(AuthenticationService authenticationService, RoleRepository roleRepository, PrivilegeRepository privilegeRepository) {
         this.authenticationService = authenticationService;
         this.roleRepository = roleRepository;
+        this.privilegeRepository = privilegeRepository;
     }
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        Role roleUser = new Role("ROLE_USER");
-        Role roleAdmin = new Role("ROLE_ADMIN");
-        Role roleManager = new Role("ROLE_MANAGER");
+
+        Privilege privilegeUserRead = new Privilege("USER_READ");
+        Privilege privilegeUserCreate = new Privilege("USER_CREATE");
+        Privilege privilegeUserUpdate = new Privilege("USER_UPDATE");
+        Privilege privilegeUserDelete = new Privilege("USER_DELETE");
+
+        privilegeUserRead = privilegeRepository.save(privilegeUserRead);
+        privilegeUserCreate = privilegeRepository.save(privilegeUserCreate);
+        privilegeUserUpdate = privilegeRepository.save(privilegeUserUpdate);
+        privilegeUserDelete = privilegeRepository.save(privilegeUserDelete);
+
+
+        Privilege privilegeManagerRead = new Privilege("MANAGER_READ");
+        Privilege privilegeManagerCreate = new Privilege("MANAGER_CREATE");
+        Privilege privilegeManagerUpdate = new Privilege("MANAGER_UPDATE");
+        Privilege privilegeManagerDelete = new Privilege("MANAGER_DELETE");
+
+        privilegeManagerRead = privilegeRepository.save(privilegeManagerRead);
+        privilegeManagerCreate = privilegeRepository.save(privilegeManagerCreate);
+        privilegeManagerUpdate = privilegeRepository.save(privilegeManagerUpdate);
+        privilegeManagerDelete = privilegeRepository.save(privilegeManagerDelete);
+
+        Privilege privilegeAdminRead = new Privilege("ADMIN_READ");
+        Privilege privilegeAdminCreate = new Privilege("ADMIN_CREATE");
+        Privilege privilegeAdminUpdate = new Privilege("ADMIN_UPDATE");
+        Privilege privilegeAdminDelete = new Privilege("ADMIN_DELETE");
+
+        privilegeAdminRead = privilegeRepository.save(privilegeAdminRead);
+        privilegeAdminCreate = privilegeRepository.save(privilegeAdminCreate);
+        privilegeAdminUpdate = privilegeRepository.save(privilegeAdminUpdate);
+        privilegeAdminDelete = privilegeRepository.save(privilegeAdminDelete);
+
+
+        Role roleUser = new Role("ROLE_USER",
+                Set.of(privilegeUserRead, privilegeUserCreate, privilegeUserUpdate, privilegeUserDelete));
+
+        Role roleManager = new Role("ROLE_MANAGER",
+                Set.of(privilegeManagerRead, privilegeManagerCreate, privilegeManagerUpdate, privilegeManagerDelete));
+
+        Role roleAdmin = new Role("ROLE_ADMIN",
+                Set.of(privilegeAdminRead, privilegeAdminCreate, privilegeAdminUpdate, privilegeAdminDelete,
+                        privilegeManagerRead, privilegeManagerCreate, privilegeManagerUpdate, privilegeManagerDelete));
+
         roleRepository.save(roleUser);
         roleRepository.save(roleAdmin);
         roleRepository.save(roleManager);
@@ -75,7 +119,7 @@ public class DataLoad {
                 "cengiz@gmail.com", "Test-password123", userRoleSet);
 
         List<RegisterRequest> requestList = List.of(funda, ali, zeynep, can, akif, gizem,
-                        selim, seda, deniz, ezgi, cengiz);
+                selim, seda, deniz, ezgi, cengiz);
 
         requestList.forEach(authenticationService::register);
 

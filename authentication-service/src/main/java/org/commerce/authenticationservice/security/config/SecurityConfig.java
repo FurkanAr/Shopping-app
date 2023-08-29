@@ -18,6 +18,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import static org.springframework.http.HttpMethod.*;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -44,13 +46,10 @@ public class SecurityConfig {
         config.setAllowCredentials(true);
         config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
-        config.addAllowedMethod("OPTIONS");
-        config.addAllowedMethod("HEAD");
         config.addAllowedMethod("GET");
         config.addAllowedMethod("PUT");
         config.addAllowedMethod("POST");
         config.addAllowedMethod("DELETE");
-        config.addAllowedMethod("PATCH");
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
@@ -70,6 +69,18 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
+                .antMatchers("/api/manager/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_MANAGER")
+                .antMatchers(GET, "/api/manager/**").hasAnyAuthority("ADMIN_READ", "MANAGER_READ")
+                .antMatchers(POST, "/api/manager/**").hasAnyAuthority("ADMIN_CREATE", "MANAGER_CREATE")
+                .antMatchers(PUT, "/api/manager/**").hasAnyAuthority("ADMIN_UPDATE", "MANAGER_UPDATE")
+                .antMatchers(DELETE, "/api/manager/**").hasAnyAuthority("ADMIN_DELETE", "MANAGER_DELETE")
+
+                .antMatchers("/api/admin/**").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers(GET, "/api/admin/**").hasAuthority("ADMIN_READ")
+                .antMatchers(POST, "/api/admin/**").hasAuthority("ADMIN_CREATE")
+                .antMatchers(PUT, "/api/admin/**").hasAuthority("ADMIN_UPDATE")
+                .antMatchers(DELETE, "/api/admin/**").hasAuthority("ADMIN_DELETE")
+
                 .antMatchers("/api/auth/**")
                 .permitAll()
                 .antMatchers("/actuator/**")
