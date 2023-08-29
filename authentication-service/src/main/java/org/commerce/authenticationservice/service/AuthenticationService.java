@@ -23,11 +23,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -61,6 +60,7 @@ public class AuthenticationService {
         this.jwtTokenService = jwtTokenService;
     }
 
+    @Transactional
     public AuthenticationResponse register(RegisterRequest registerRequest) {
         logger.info("register method started");
         logger.info("RegisterRequest: {}", registerRequest);
@@ -84,16 +84,21 @@ public class AuthenticationService {
 
         var jwtToken = jwtTokenService.generateToken(userDetails, claims);
         logger.info("User {}, token created ", user.getId());
+
         tokenRepository.save(tokenConverter.convert(jwtToken, user));
         logger.info("User {}, token saved ", user.getId());
+
         var refreshToken = jwtTokenService.generateRefreshToken(userDetails, getUserJwtClaims(user));
         logger.info("User {}, refresh token created ", user.getId());
 
+        AuthenticationResponse authenticationResponse = new AuthenticationResponse(jwtToken, refreshToken);
+        logger.info("Access and refresh token created user: {}", user.getId());
+
         logger.info("register method successfully worked");
-        return new AuthenticationResponse(jwtToken, refreshToken);
+        return authenticationResponse;
     }
 
-
+    @Transactional
     public AuthenticationResponse login(LoginRequest loginRequest) {
         logger.info("login method started");
         User user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow(() ->
@@ -109,6 +114,7 @@ public class AuthenticationService {
 
         Map<String, Object> claims = getUserJwtClaims(user);
         UserDetails userDetails = CustomUserDetails.create(user);
+
         var jwtToken = jwtTokenService.generateToken(userDetails, claims);
         logger.info("User {}, token created ", user.getId());
 
@@ -116,13 +122,18 @@ public class AuthenticationService {
 
         tokenRepository.save(tokenConverter.convert(jwtToken, user));
         logger.info("User {}, token saved ", user.getId());
+
         var refreshToken = jwtTokenService.generateRefreshToken(userDetails, getUserJwtClaims(user));
         logger.info("User {}, refresh token created ", user.getId());
 
+        AuthenticationResponse authenticationResponse = new AuthenticationResponse(jwtToken, refreshToken);
+        logger.info("Access and refresh token created user: {}", user.getId());
+
         logger.info("login method successfully worked");
-        return new AuthenticationResponse(jwtToken, refreshToken);
+        return authenticationResponse;
     }
 
+    @Transactional
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.info("refreshToken method started");
         final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
@@ -138,23 +149,28 @@ public class AuthenticationService {
         username = jwtTokenService.findUserName(refreshToken);
         logger.info("User found with refresh token: {}", username);
 
-        if (username != null ) {
+        if (username != null) {
             var user = userRepository.findByUsername(username)
                     .orElseThrow(() -> new UsernameNotFoundException(Messages.User.NOT_EXISTS + username));
             UserDetails userDetails = CustomUserDetails.create(user);
             logger.info("User: {}, userDetails", user.getUsername());
-            if (jwtTokenService.tokenControl(refreshToken,  userDetails)) {
+
+            if (jwtTokenService.tokenControl(refreshToken, userDetails)) {
                 var accessToken = jwtTokenService.generateToken(userDetails, getUserJwtClaims(user));
+                logger.info("User {}, token created ", user.getId());
+
                 revokeAllUserTokens(user);
                 tokenRepository.save(tokenConverter.convert(accessToken, user));
+                logger.info("User {}, token saved ", user.getId());
+
                 var authResponse = new AuthenticationResponse(accessToken, refreshToken);
-                logger.info("accestoken: {}", accessToken);
-                logger.info("refreshtoken: {}", refreshToken);
+                logger.info("access and refresh token created user: {}", user.getId());
+
                 response.setContentType(MediaType.APPLICATION_JSON_VALUE);
                 new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
             }
         }
-        logger.info("doFilterInternal method successfully worked");
+        logger.info("refreshToken method successfully worked");
     }
 
     private void checkRequestUserNameInUse(String username) {
@@ -175,7 +191,7 @@ public class AuthenticationService {
             logger.warn("User already has account by given email: {}", email);
             throw new UserEmailAlreadyInUseException(Messages.User.EMAIL_EXIST + email);
         }
-        logger.info("Email can be use");
+        logger.info("Email {}, can be use: ", email);
         logger.info("checkRequestEmailInUse method successfully worked");
     }
 
@@ -205,7 +221,6 @@ public class AuthenticationService {
         logger.info("User {}, valid tokens saved ", user.getId());
         logger.info("revokeAllUserTokens method successfully worked");
     }
-
 
 
 }
