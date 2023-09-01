@@ -3,6 +3,14 @@ package org.commerce.authenticationservice.exception.messages;
 public class Messages {
 
 
+    public static class VerificationToken{
+
+        public static final String NOT_EXISTS = "Token not found";
+
+        public static final String ALREADY_CONFIRMED = "Email already confirmed";
+        public static final String EXPIRED = "Token expired";
+    }
+
     public static class Role{
         public static final String NOT_EXISTS = "Role cannot find with given name: ";
     }

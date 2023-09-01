@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: notification-service
+
+  config:
+    profile: native
+    import: configserver:http://localhost:8888

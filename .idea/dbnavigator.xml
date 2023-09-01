@@ -23,13 +23,7 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5" dataset="public.users" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5" dataset="public.user_roles" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="cbf39455-2c1b-46e9-8c83-cbbc55d72de5" dataset="public.roles" active-filter-id="">
-      <filter id="866e7b79-e561-4a26-b3ec-036c5e53c035" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
-        <condition column="id" operator="=" value="" active="true" />
-      </filter>
-    </filter-actions>
+    <filter-actions connection-id="ad76ca11-8d52-401e-87f7-69a64eba286c" dataset="public.verification_token" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

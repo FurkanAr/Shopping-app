@@ -4,6 +4,7 @@ import org.commerce.authenticationservice.request.LoginRequest;
 import org.commerce.authenticationservice.request.RegisterRequest;
 import org.commerce.authenticationservice.response.AuthenticationResponse;
 import org.commerce.authenticationservice.service.AuthenticationService;
+import org.commerce.authenticationservice.service.VerificationTokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -20,18 +21,20 @@ import java.io.IOException;
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
+    private final VerificationTokenService verificationTokenService;
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    public AuthenticationController(AuthenticationService authenticationService) {
+    public AuthenticationController(AuthenticationService authenticationService, VerificationTokenService verificationTokenService) {
         this.authenticationService = authenticationService;
+        this.verificationTokenService = verificationTokenService;
     }
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody @Valid RegisterRequest registerRequest) {
+    public ResponseEntity<String> register(@RequestBody @Valid RegisterRequest registerRequest) {
         logger.info("register method started");
-        AuthenticationResponse authenticationResponse = authenticationService.register(registerRequest);
+        String response = authenticationService.register(registerRequest);
         logger.info("register successfully worked, user email: {}", registerRequest.getEmail());
-        return ResponseEntity.status(HttpStatus.CREATED).body(authenticationResponse);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PostMapping("/login")
@@ -47,6 +50,11 @@ public class AuthenticationController {
         logger.info("refreshToken method started");
         authenticationService.refreshToken(request, response);
         logger.info("refreshToken successfully worked");
+    }
+
+    @GetMapping("/verifyEmail")
+    public String verifyEmail(@RequestParam("token") String token){
+        return authenticationService.verifyEmail(token);
     }
 
 }

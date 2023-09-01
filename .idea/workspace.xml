@@ -4,13 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="privileges and roles added">
+    <list default="true" id="a42653f5-6edb-4949-b504-dfe46a3b355e" name="Changes" comment="notification service created">
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/config/RabbitMQMailConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/converter/MailConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/token/EmailAlreadyConfirmedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/token/VerificationTokenExpiredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/token/VerificationTokenNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/VerificationToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/repository/VerificationTokenRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/request/MailRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/TokenService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/VerificationTokenService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/microservice/notification-service.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/authentication-service/authentication-service.log.2023-08-29.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/authentication-service/authentication-service.log.2023-08-30.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/notification-service/notification-service.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/notification-service/notification-service.log.2023-08-29.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/notification-service/notification-service.log.2023-08-30.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/org/commerce/NotificationServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/org/commerce/config/RabbitMQListenerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/org/commerce/listener/NotificationListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/org/commerce/request/MailRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/constants/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/constants/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/controller/advice/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/messages/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/exception/messages/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/jwt/JwtTokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/security/service/CustomUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authentication-service/src/main/java/org/commerce/authenticationservice/service/AuthenticationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/microservice/authentication-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/microservice/authentication-service.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/microservice/eureka-server.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/microservice/eureka-server.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/authentication-service/authentication-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/authentication-service/authentication-service.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-parent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service-parent/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +54,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -45,7 +78,8 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/farfa/Desktop/Shopping-app/notification-service/src/main/resources&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.6034483&quot;,
@@ -54,21 +88,26 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.commerce.authenticationservice.exception.token" />
+      <recent name="org.commerce.authenticationservice.request" />
       <recent name="org.commerce.authenticationservice.model" />
       <recent name="org.commerce.authenticationservice.model.enums" />
       <recent name="org.commerce.authenticationservice.exception.role" />
-      <recent name="org.commerce.authenticationservice.exception.user" />
-      <recent name="org.commerce.authenticationservice.converter" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\farfa\Desktop\Shopping-app\notification-service\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\farfa\Desktop\Shopping-app\authentication-service\src\main\resources" />
       <recent name="C:\Users\farfa\Desktop\Shopping-app\authentication-service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.commerce.authenticationservice.repository" />
+      <recent name="org.commerce.request" />
       <recent name="org.commerce.authenticationservice.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AuthenticationServiceApplication">
+  <component name="RunManager" selected="Application.NotificationServiceApplication">
     <configuration name="AuthenticationServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.commerce.authenticationservice.AuthenticationServiceApplication" />
       <module name="authentication-service" />
@@ -108,6 +147,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NotificationServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.commerce.NotificationServiceApplication" />
+      <module name="notification-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.commerce.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="docs: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -116,26 +168,13 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docs.psql-db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="psql-db" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docs/docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.NotificationServiceApplication" />
         <item itemvalue="Application.AuthenticationServiceApplication" />
+        <item itemvalue="Docker.docs: Compose Deployment" />
         <item itemvalue="Application.EurekaServerApplication" />
         <item itemvalue="Application.ConfigServerApplication" />
-        <item itemvalue="Docker.docs: Compose Deployment" />
-        <item itemvalue="Docker.docs.psql-db: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693311680063</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="security configs handled from config-server yml">
+      <created>1693316478877</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693316478877</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -255,6 +301,8 @@
     <MESSAGE value="logout method added" />
     <MESSAGE value="loggers added to methods" />
     <MESSAGE value="privileges and roles added" />
-    <option name="LAST_COMMIT_MESSAGE" value="privileges and roles added" />
+    <MESSAGE value="security configs handled from config-server yml" />
+    <MESSAGE value="notification service created" />
+    <option name="LAST_COMMIT_MESSAGE" value="notification service created" />
   </component>
 </project>

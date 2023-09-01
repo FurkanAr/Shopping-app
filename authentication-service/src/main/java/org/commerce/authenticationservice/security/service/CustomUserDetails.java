@@ -15,19 +15,22 @@ public class CustomUserDetails implements UserDetails {
 
     private String username;
     private String password;
+    private Boolean isEnabled;
     private Collection<? extends GrantedAuthority> authorities;
     static Logger logger = LoggerFactory.getLogger(CustomUserDetails.class);
 
-    private CustomUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    private CustomUserDetails(String username, String password, Boolean isEnabled, Collection<? extends GrantedAuthority> authorities) {
         this.username = username;
         this.password = password;
+        this.isEnabled = isEnabled;
         this.authorities = authorities;
     }
 
     public static CustomUserDetails create(User user) {
         logger.info("create method started");
         CustomUserDetails customUserDetails =
-                new CustomUserDetails(user.getUsername(), user.getPassword(), getAuthorities(user.getRoles()));
+                new CustomUserDetails(user.getUsername(), user.getPassword(), user.getEnabled(),
+                                        getAuthorities(user.getRoles()));
         logger.info("User found with userDetails: {}", user.getUsername());
         logger.info("create method successfully worked");
         return customUserDetails;
@@ -101,6 +104,6 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isEnabled;
     }
 }

@@ -1,25 +1,12 @@
 server:
-  port: 9091
+  port: 9092
 spring:
   application:
-    name: authentication-service
+    name: notification-service
   output:
     ansi:
       enabled: always
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: 'jdbc:postgresql://localhost:5432/shopping_app'
-    username: root
-    password: root
-    driverClassName: org.postgresql.Driver
+
   rabbitmq:
     host: localhost
     port: 5672
@@ -27,14 +14,6 @@ spring:
     password: 123456
 
 spcloud:
-  security:
-    jwt:
-      secret-key: 9ln6jZ1h5BuP28k5RmlOaeL5rise7xe9czd4yA8pZdfGA36zbmRt
-      expiration: 86400000
-      refresh-token:
-        expiration: 604800000
-      verification-token:
-        expiration: 15000
   mail:
     queue:
       name: shopping.user-registration.notification
@@ -61,4 +40,4 @@ logging:
     root: INFO
   file:
     path: './logs/${spring.application.name}'
-    name: '${logging.file.path}/authentication-service.log'
+    name: '${logging.file.path}/notification-service.log'

@@ -24,9 +24,10 @@ public class User {
     private String email;
     @Column(name = "password")
     private String password;
+    @Column(name = "enable")
+    private Boolean isEnabled = false;
     @Column(name = "create_date")
     private LocalDateTime createDate=LocalDateTime.now();
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH,
@@ -34,12 +35,10 @@ public class User {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Token> tokens;
 
     public User() {
-        this.createDate = LocalDateTime.now();
     }
 
     public User(String username, String firstName, String surName, String email, String password, Set<Role> roles) {
@@ -49,7 +48,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.roles = roles;
-        this.createDate = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -98,6 +96,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        isEnabled = enabled;
     }
 
     public LocalDateTime getCreateDate() {

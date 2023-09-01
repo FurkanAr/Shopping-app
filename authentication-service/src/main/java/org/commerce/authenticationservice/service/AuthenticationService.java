@@ -2,24 +2,32 @@ package org.commerce.authenticationservice.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpHeaders;
+import org.commerce.authenticationservice.config.RabbitMQMailConfiguration;
+import org.commerce.authenticationservice.constants.Constant;
+import org.commerce.authenticationservice.converter.MailConverter;
 import org.commerce.authenticationservice.converter.TokenConverter;
 import org.commerce.authenticationservice.converter.UserConverter;
 import org.commerce.authenticationservice.exception.messages.Messages;
-import org.commerce.authenticationservice.exception.role.RoleCannotFoundException;
+import org.commerce.authenticationservice.exception.token.EmailAlreadyConfirmedException;
+import org.commerce.authenticationservice.exception.token.VerificationTokenExpiredException;
+import org.commerce.authenticationservice.exception.token.VerificationTokenNotFoundException;
 import org.commerce.authenticationservice.exception.user.UserEmailAlreadyInUseException;
 import org.commerce.authenticationservice.exception.user.UserNameAlreadyInUseException;
 import org.commerce.authenticationservice.model.Role;
+import org.commerce.authenticationservice.model.Token;
 import org.commerce.authenticationservice.model.User;
-import org.commerce.authenticationservice.repository.RoleRepository;
+import org.commerce.authenticationservice.model.VerificationToken;
 import org.commerce.authenticationservice.repository.TokenRepository;
 import org.commerce.authenticationservice.repository.UserRepository;
 import org.commerce.authenticationservice.request.LoginRequest;
+import org.commerce.authenticationservice.request.MailRequest;
 import org.commerce.authenticationservice.request.RegisterRequest;
 import org.commerce.authenticationservice.response.AuthenticationResponse;
 import org.commerce.authenticationservice.security.jwt.JwtTokenService;
 import org.commerce.authenticationservice.security.service.CustomUserDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,7 +39,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashSet;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -43,35 +52,43 @@ public class AuthenticationService {
 
     private final UserRepository userRepository;
     private final UserConverter userConverter;
-    private final RoleRepository roleRepository;
-    private final TokenRepository tokenRepository;
-    private final TokenConverter tokenConverter;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenService jwtTokenService;
+    private final RabbitTemplate rabbitTemplate;
+    private final RabbitMQMailConfiguration rabbitMQMailConfiguration;
+    private final MailConverter mailConverter;
+    private final VerificationTokenService verificationTokenService;
+    private final RoleService roleService;
+    private final TokenService tokenService;
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    public AuthenticationService(UserRepository userRepository, UserConverter userConverter, RoleRepository roleRepository, TokenRepository tokenRepository, TokenConverter tokenConverter, AuthenticationManager authenticationManager, JwtTokenService jwtTokenService) {
+    public AuthenticationService(UserRepository userRepository, UserConverter userConverter,
+                                  AuthenticationManager authenticationManager, JwtTokenService jwtTokenService,
+                                 RabbitTemplate rabbitTemplate, RabbitMQMailConfiguration rabbitMQMailConfiguration,
+                                 MailConverter mailConverter, VerificationTokenService verificationTokenService,
+                                 RoleService roleService, TokenService tokenService) {
+
         this.userRepository = userRepository;
         this.userConverter = userConverter;
-        this.roleRepository = roleRepository;
-        this.tokenRepository = tokenRepository;
-        this.tokenConverter = tokenConverter;
         this.authenticationManager = authenticationManager;
         this.jwtTokenService = jwtTokenService;
+        this.rabbitTemplate = rabbitTemplate;
+        this.rabbitMQMailConfiguration = rabbitMQMailConfiguration;
+        this.mailConverter = mailConverter;
+        this.verificationTokenService = verificationTokenService;
+        this.roleService = roleService;
+        this.tokenService = tokenService;
     }
 
     @Transactional
-    public AuthenticationResponse register(RegisterRequest registerRequest) {
+    public String register(RegisterRequest registerRequest) {
         logger.info("register method started");
         logger.info("RegisterRequest: {}", registerRequest);
 
         checkRequestEmailInUse(registerRequest.getEmail());
         checkRequestUserNameInUse(registerRequest.getUsername());
 
-        Set<Role> roles = new HashSet<>();
-        registerRequest.getRoles().forEach(role -> roles.add(roleRepository.findByName(role)
-                .orElseThrow(() -> new RoleCannotFoundException(Messages.Role.NOT_EXISTS + role))));
-
+        Set<Role> roles = roleService.getRoles(registerRequest.getRoles());
         User user = userRepository.save(userConverter.convert(registerRequest, roles));
 
         logger.info("User created: {}", user.getId());
@@ -79,24 +96,22 @@ public class AuthenticationService {
         // TODO sent user information to feign client
         // TODO sent mail to notification service
 
-        Map<String, Object> claims = getUserJwtClaims(user);
         UserDetails userDetails = CustomUserDetails.create(user);
+        String verificationToken = jwtTokenService.generateVerificationToken(userDetails);
+        verificationTokenService.createVerificationToken(verificationToken, user);
+        String url = "http://localhost:9091/api/auth/verifyEmail?token="+verificationToken;
 
-        var jwtToken = jwtTokenService.generateToken(userDetails, claims);
-        logger.info("User {}, token created ", user.getId());
+        MailRequest mailRequest = mailConverter
+                .convert(user.getEmail(), Constant.Authentication.REGISTRATION_SUBJECT,
+                                        Constant.Authentication.REGISTRATION_MAIL_MESSAGE + url);
 
-        tokenRepository.save(tokenConverter.convert(jwtToken, user));
-        logger.info("User {}, token saved ", user.getId());
-
-        var refreshToken = jwtTokenService.generateRefreshToken(userDetails, getUserJwtClaims(user));
-        logger.info("User {}, refresh token created ", user.getId());
-
-        AuthenticationResponse authenticationResponse = new AuthenticationResponse(jwtToken, refreshToken);
-        logger.info("Access and refresh token created user: {}", user.getId());
+        rabbitTemplate.convertAndSend(rabbitMQMailConfiguration.getQueueName(), mailRequest);
+        logger.info("MailRequest: {}, sent to : {}", mailRequest, rabbitMQMailConfiguration.getQueueName());
 
         logger.info("register method successfully worked");
-        return authenticationResponse;
+        return "Success! Please, check your email for to complete your registration";
     }
+
 
     @Transactional
     public AuthenticationResponse login(LoginRequest loginRequest) {
@@ -120,7 +135,7 @@ public class AuthenticationService {
 
         revokeAllUserTokens(user);
 
-        tokenRepository.save(tokenConverter.convert(jwtToken, user));
+        tokenService.saveToken(jwtToken, user);
         logger.info("User {}, token saved ", user.getId());
 
         var refreshToken = jwtTokenService.generateRefreshToken(userDetails, getUserJwtClaims(user));
@@ -160,7 +175,7 @@ public class AuthenticationService {
                 logger.info("User {}, token created ", user.getId());
 
                 revokeAllUserTokens(user);
-                tokenRepository.save(tokenConverter.convert(accessToken, user));
+                tokenService.saveToken(accessToken, user);
                 logger.info("User {}, token saved ", user.getId());
 
                 var authResponse = new AuthenticationResponse(accessToken, refreshToken);
@@ -171,6 +186,36 @@ public class AuthenticationService {
             }
         }
         logger.info("refreshToken method successfully worked");
+    }
+
+    @Transactional
+    public String verifyEmail(String token) {
+        logger.info("verifyEmail method started");
+        VerificationToken verificationToken = verificationTokenService.getToken(token);
+
+        if (verificationToken.getConfirmedAt() != null){
+            logger.warn("Token already confirmed, user {}", verificationToken.getUser().getId());
+            throw new EmailAlreadyConfirmedException(Messages.VerificationToken.ALREADY_CONFIRMED);
+        }
+
+        LocalDateTime expiredAt = verificationToken.getExpiredAt();
+
+        if (expiredAt.isBefore(LocalDateTime.now())){
+            logger.warn("Token expired");
+            verificationTokenService.deleteToken(token);
+            throw new VerificationTokenExpiredException(Messages.VerificationToken.EXPIRED);
+        }
+
+        verificationTokenService.setEnableToken(token);
+
+        User user = verificationToken.getUser();
+        user.setEnabled(Boolean.TRUE);
+        userRepository.save(user);
+
+        logger.info("User: {}, account enabled", user.getId());
+        logger.info("verifyEmail method successfully worked");
+
+        return "Email verified successfully. Now you can login to your account";
     }
 
     private void checkRequestUserNameInUse(String username) {
@@ -208,7 +253,7 @@ public class AuthenticationService {
 
     private void revokeAllUserTokens(User user) {
         logger.info("revokeAllUserTokens method started");
-        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
+        List<Token> validUserTokens = tokenService.findAllValidTokenByUser(user.getId());
         if (validUserTokens.isEmpty()) {
             logger.warn("User {} has not valid tokens: ", user.getId());
             return;
@@ -217,10 +262,11 @@ public class AuthenticationService {
             token.setExpired(true);
             token.setRevoked(true);
         });
-        tokenRepository.saveAll(validUserTokens);
+        tokenService.saveAllTokens(validUserTokens);
         logger.info("User {}, valid tokens saved ", user.getId());
         logger.info("revokeAllUserTokens method successfully worked");
     }
+
 
 
 }

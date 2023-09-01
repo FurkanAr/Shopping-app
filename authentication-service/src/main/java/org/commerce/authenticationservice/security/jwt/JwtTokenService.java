@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -27,7 +28,8 @@ public class JwtTokenService {
     private long ACCESS_TOKEN_EXPIRES_IN;
     @Value("${spcloud.security.jwt.refresh-token.expiration}")
     private long REFRESH_TOKEN_EXPIRES_IN;
-
+    @Value("${spcloud.security.jwt.verification-token.expiration}")
+    private long VERIFICATION_TOKEN_EXPIRES_IN;
 
 
     public String findUserName(String token) {
@@ -74,6 +76,13 @@ public class JwtTokenService {
         logger.info("generateToken method started");
         String token = buildToken(user, extraClaims, ACCESS_TOKEN_EXPIRES_IN);
         logger.info("generateToken method successfully worked");
+        return token;
+    }
+
+    public String generateVerificationToken(UserDetails user) {
+        logger.info("generateVerificationToken method started");
+        String token = buildToken(user, new HashMap<>(), VERIFICATION_TOKEN_EXPIRES_IN);
+        logger.info("generateVerificationToken method successfully worked");
         return token;
     }
 

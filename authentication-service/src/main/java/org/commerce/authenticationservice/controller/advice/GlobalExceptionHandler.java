@@ -4,11 +4,15 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import org.commerce.authenticationservice.exception.response.ExceptionResponse;
 import org.commerce.authenticationservice.exception.role.RoleCannotFoundException;
+import org.commerce.authenticationservice.exception.token.EmailAlreadyConfirmedException;
+import org.commerce.authenticationservice.exception.token.VerificationTokenExpiredException;
+import org.commerce.authenticationservice.exception.token.VerificationTokenNotFoundException;
 import org.commerce.authenticationservice.exception.user.UserEmailAlreadyInUseException;
 import org.commerce.authenticationservice.exception.user.UserNameAlreadyInUseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -84,6 +88,33 @@ public class GlobalExceptionHandler {
                         request.getDescription(false)));
     }
 
+    @ExceptionHandler(VerificationTokenNotFoundException.class)
+    public ResponseEntity<ExceptionResponse> handle(VerificationTokenNotFoundException exception, ServletWebRequest request) {
+        return ResponseEntity
+                .ok(new ExceptionResponse(
+                        HttpStatus.BAD_REQUEST,
+                        Collections.singletonList(exception.getMessage()),
+                        request.getDescription(false)));
+    }
+
+    @ExceptionHandler(EmailAlreadyConfirmedException.class)
+    public ResponseEntity<ExceptionResponse> handle(EmailAlreadyConfirmedException exception, ServletWebRequest request) {
+        return ResponseEntity
+                .ok(new ExceptionResponse(
+                        HttpStatus.BAD_REQUEST,
+                        Collections.singletonList(exception.getMessage()),
+                        request.getDescription(false)));
+    }
+
+    @ExceptionHandler(VerificationTokenExpiredException.class)
+    public ResponseEntity<ExceptionResponse> handle(VerificationTokenExpiredException exception, ServletWebRequest request) {
+        return ResponseEntity
+                .ok(new ExceptionResponse(
+                        HttpStatus.BAD_REQUEST,
+                        Collections.singletonList(exception.getMessage()),
+                        request.getDescription(false)));
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionResponse> handle(Exception exception, ServletWebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse();
@@ -111,6 +142,13 @@ public class GlobalExceptionHandler {
             exceptionResponse.setErrors(Collections.singletonList(exception.getMessage()));
             exceptionResponse.setPath(request.getDescription(false));
         }
+
+        if (exception instanceof DisabledException){
+            exceptionResponse.setHttpStatus(HttpStatus.FORBIDDEN);
+            exceptionResponse.setErrors(Collections.singletonList(exception.getMessage()));
+            exceptionResponse.setPath(request.getDescription(false));
+        }
+
         return ResponseEntity.ok(exceptionResponse);
     }
 

@@ -1,0 +1,186 @@
+2023-09-01 21:36:44.048  INFO 8436 --- [restartedMain] o.c.NotificationServiceApplication       : Starting NotificationServiceApplication using Java 19.0.1 on DESKTOP-C7M7OCV with PID 8436 (C:\Users\farfa\Desktop\Shopping-app\notification-service\target\classes started by farfa in C:\Users\farfa\Desktop\Shopping-app)
+2023-09-01 21:36:44.063  INFO 8436 --- [restartedMain] o.c.NotificationServiceApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-01 21:36:44.233  INFO 8436 --- [restartedMain] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888
+2023-09-01 21:36:44.235  INFO 8436 --- [restartedMain] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=notification-service, profiles=[default], label=null, version=null, state=null
+2023-09-01 21:36:44.240  INFO 8436 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-09-01 21:36:44.241  INFO 8436 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-09-01 21:36:47.393  INFO 8436 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2fdb7a31-5d67-3291-aa3c-91fdfe2cedf9
+2023-09-01 21:36:48.884  INFO 8436 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9092 (http)
+2023-09-01 21:36:48.904  INFO 8436 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-01 21:36:48.905  INFO 8436 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-09-01 21:36:49.090  INFO 8436 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-01 21:36:49.091  INFO 8436 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4849 ms
+2023-09-01 21:36:51.486  WARN 8436 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-09-01 21:36:51.764  INFO 8436 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-09-01 21:36:51.925  WARN 8436 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-09-01 21:36:51.971  INFO 8436 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 17 endpoint(s) beneath base path '/actuator'
+2023-09-01 21:36:52.103  INFO 8436 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-09-01 21:36:52.299  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-09-01 21:36:52.308  INFO 8436 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 21:36:52.347  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-09-01 21:36:52.348  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-09-01 21:36:52.348  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-09-01 21:36:52.349  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-09-01 21:36:52.349  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-09-01 21:36:52.349  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-09-01 21:36:52.350  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-09-01 21:36:52.696  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-09-01 21:36:52.701  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-09-01 21:36:52.706  INFO 8436 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-09-01 21:36:52.715  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1693593412714 with initial instances count: 2
+2023-09-01 21:36:52.717  INFO 8436 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application NOTIFICATION-SERVICE with eureka with status UP
+2023-09-01 21:36:52.719  INFO 8436 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1693593412719, current=UP, previous=STARTING]
+2023-09-01 21:36:52.723  INFO 8436 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICATION-SERVICE/DESKTOP-C7M7OCV:notification-service:9092: registering service...
+2023-09-01 21:36:52.775  INFO 8436 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9092 (http) with context path ''
+2023-09-01 21:36:52.777  INFO 8436 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9092
+2023-09-01 21:36:52.809  INFO 8436 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICATION-SERVICE/DESKTOP-C7M7OCV:notification-service:9092 - registration status: 204
+2023-09-01 21:36:52.989  INFO 8436 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2023-09-01 21:36:53.067  INFO 8436 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#2b3f45f3:0/SimpleConnection@af99836 [delegate=amqp://admin@127.0.0.1:5672/, localPort= 51158]
+2023-09-01 21:36:53.176  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: tester@gmail.com
+2023-09-01 21:36:53.177  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='tester@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.179  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.185  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: fundakar@gmail.com
+2023-09-01 21:36:53.186  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='fundakar@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.188  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.189  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: aliaktar@gmail.com
+2023-09-01 21:36:53.191  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='aliaktar@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.207  INFO 8436 --- [restartedMain] o.c.NotificationServiceApplication       : Started NotificationServiceApplication in 11.579 seconds (JVM running for 12.922)
+2023-09-01 21:36:53.207  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.215  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: zeynepsever@gmail.com
+2023-09-01 21:36:53.245  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='zeynepsever@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.246  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.248  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: cantok@gmail.com
+2023-09-01 21:36:53.248  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='cantok@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.248  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.249  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: akif-bıcak@gmail.com
+2023-09-01 21:36:53.254  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='akif-bıcak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.254  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.255  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: gizemak@gmail.com
+2023-09-01 21:36:53.256  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='gizemak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.256  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.261  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: selimak@gmail.com
+2023-09-01 21:36:53.263  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='selimak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.264  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.271  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: sedaak@gmail.com
+2023-09-01 21:36:53.273  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='sedaak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.274  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.275  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: denizak@gmail.com
+2023-09-01 21:36:53.276  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='denizak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.276  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.280  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: ezgiak@gmail.com
+2023-09-01 21:36:53.282  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='ezgiak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.283  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.288  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: cengiz@gmail.com
+2023-09-01 21:36:53.289  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='cengiz@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.289  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.291  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: fundakar@gmail.com
+2023-09-01 21:36:53.291  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='fundakar@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.292  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.293  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: aliaktar@gmail.com
+2023-09-01 21:36:53.294  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='aliaktar@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.294  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.295  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: zeynepsever@gmail.com
+2023-09-01 21:36:53.296  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='zeynepsever@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.296  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.298  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: cantok@gmail.com
+2023-09-01 21:36:53.298  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='cantok@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.298  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.299  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: akif-bıcak@gmail.com
+2023-09-01 21:36:53.300  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='akif-bıcak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.300  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.302  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: gizemak@gmail.com
+2023-09-01 21:36:53.303  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='gizemak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.303  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.304  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: selimak@gmail.com
+2023-09-01 21:36:53.305  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='selimak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.305  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.307  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: sedaak@gmail.com
+2023-09-01 21:36:53.308  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='sedaak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.309  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.311  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: denizak@gmail.com
+2023-09-01 21:36:53.311  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='denizak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.311  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.313  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: ezgiak@gmail.com
+2023-09-01 21:36:53.314  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='ezgiak@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.315  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:36:53.316  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: cengiz@gmail.com
+2023-09-01 21:36:53.317  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='cengiz@gmail.com', subject='Registration'}
+2023-09-01 21:36:53.317  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:37:41.134  INFO 8436 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application NOTIFICATION-SERVICE with eureka with status DOWN
+2023-09-01 21:37:41.135  INFO 8436 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1693593461135, current=DOWN, previous=UP]
+2023-09-01 21:37:41.135  INFO 8436 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICATION-SERVICE/DESKTOP-C7M7OCV:notification-service:9092: registering service...
+2023-09-01 21:37:41.142  INFO 8436 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICATION-SERVICE/DESKTOP-C7M7OCV:notification-service:9092 - registration status: 204
+2023-09-01 21:37:41.148  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2023-09-01 21:37:41.755  INFO 8436 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2023-09-01 21:37:41.823  INFO 8436 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-09-01 21:37:44.832  INFO 8436 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-09-01 21:37:44.840  INFO 8436 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICATION-SERVICE/DESKTOP-C7M7OCV:notification-service:9092 - deregister  status: 200
+2023-09-01 21:37:44.849  INFO 8436 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2023-09-01 21:37:55.916  INFO 18640 --- [restartedMain] o.c.NotificationServiceApplication       : Starting NotificationServiceApplication using Java 19.0.1 on DESKTOP-C7M7OCV with PID 18640 (C:\Users\farfa\Desktop\Shopping-app\notification-service\target\classes started by farfa in C:\Users\farfa\Desktop\Shopping-app)
+2023-09-01 21:37:55.921  INFO 18640 --- [restartedMain] o.c.NotificationServiceApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-09-01 21:37:56.156  INFO 18640 --- [restartedMain] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888
+2023-09-01 21:37:56.157  INFO 18640 --- [restartedMain] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=notification-service, profiles=[default], label=null, version=null, state=null
+2023-09-01 21:37:56.165  INFO 18640 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-09-01 21:37:56.166  INFO 18640 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-09-01 21:37:59.372  INFO 18640 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2fdb7a31-5d67-3291-aa3c-91fdfe2cedf9
+2023-09-01 21:38:00.815  INFO 18640 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9092 (http)
+2023-09-01 21:38:00.833  INFO 18640 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-01 21:38:00.840  INFO 18640 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-09-01 21:38:01.027  INFO 18640 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-01 21:38:01.028  INFO 18640 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4860 ms
+2023-09-01 21:38:03.465  WARN 18640 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-09-01 21:38:03.716  INFO 18640 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-09-01 21:38:03.902  WARN 18640 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-09-01 21:38:03.951  INFO 18640 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 17 endpoint(s) beneath base path '/actuator'
+2023-09-01 21:38:04.070  INFO 18640 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-09-01 21:38:04.301  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-09-01 21:38:04.314  INFO 18640 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 21:38:04.358  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-09-01 21:38:04.359  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-09-01 21:38:04.359  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-09-01 21:38:04.360  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-09-01 21:38:04.360  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-09-01 21:38:04.360  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-09-01 21:38:04.360  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-09-01 21:38:04.726  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-09-01 21:38:04.731  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-09-01 21:38:04.738  INFO 18640 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-09-01 21:38:04.748  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1693593484747 with initial instances count: 2
+2023-09-01 21:38:04.750  INFO 18640 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application NOTIFICATION-SERVICE with eureka with status UP
+2023-09-01 21:38:04.752  INFO 18640 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1693593484752, current=UP, previous=STARTING]
+2023-09-01 21:38:04.756  INFO 18640 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICATION-SERVICE/DESKTOP-C7M7OCV:notification-service:9092: registering service...
+2023-09-01 21:38:04.812  INFO 18640 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9092 (http) with context path ''
+2023-09-01 21:38:04.814  INFO 18640 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9092
+2023-09-01 21:38:04.846  INFO 18640 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICATION-SERVICE/DESKTOP-C7M7OCV:notification-service:9092 - registration status: 204
+2023-09-01 21:38:05.048  INFO 18640 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2023-09-01 21:38:05.147  INFO 18640 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#71eb7675:0/SimpleConnection@371f8e47 [delegate=amqp://admin@127.0.0.1:5672/, localPort= 51176]
+2023-09-01 21:38:05.246  INFO 18640 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : Notification listener invoked - Consuming Message with EmailRequest Email: tester@gmail.com
+2023-09-01 21:38:05.247  INFO 18640 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : mailRequest: MailRequest{emailFrom='shopping@gmail.com', emailTo='tester@gmail.com', subject='Registration', text='Welcome to the blog app!!  http://localhost:9091/api/auth/verifyEmail?tokeneyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2OTM1OTM0NjgsImV4cCI6MTY5MzU5MzQ4M30.c29da--00HU5RzCjm3f-usL1p0-oTeKTKr5ZEHNkkiE'}
+2023-09-01 21:38:05.272  INFO 18640 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.c.listener.NotificationListener        : notificationListener method successfully worked
+2023-09-01 21:38:05.284  INFO 18640 --- [restartedMain] o.c.NotificationServiceApplication       : Started NotificationServiceApplication in 11.957 seconds (JVM running for 13.52)
+2023-09-01 21:43:04.370  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 21:48:04.382  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 21:53:04.398  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 21:58:04.405  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:03:04.411  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:08:04.413  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:13:04.417  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:18:04.423  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:23:04.439  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:28:04.442  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:33:04.444  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:38:04.457  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:43:04.472  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:48:04.488  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:53:04.497  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 22:58:04.511  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:03:04.527  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:08:04.529  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:13:04.542  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:18:04.548  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:23:04.550  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:28:04.560  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:33:04.576  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:38:04.585  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:43:04.595  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-09-01 23:48:04.609  INFO 18640 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
